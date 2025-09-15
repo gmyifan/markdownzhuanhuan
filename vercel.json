@@ -1,26 +1,15 @@
 {
   "version": 2,
   "name": "markdownzhuanhuan-v015",
-
+  "installCommand": "npm ci || npm i",
+  "buildCommand": "npm run build",
   "outputDirectory": "public",
-  "rewrites": [
-    {
-      "source": "/product.html",
-      "destination": "/index.html"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "Cross-Origin-Embedder-Policy",
-          "value": "require-corp"
-        },
-        {
-          "key": "Cross-Origin-Opener-Policy",
-          "value": "same-origin"
-        }
+        { "key": "Cross-Origin-Embedder-Policy", "value": "require-corp" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" }
       ]
     }
   ]
