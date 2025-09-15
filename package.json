@@ -6,7 +6,7 @@
   "scripts": {
     "start": "python3 -m http.server 8080",
     "dev": "python3 -m http.server 8080",
-    "build": "echo 'Static site - no build needed'",
+    "build": "mkdir -p public && cp -r *.html *.json modules scripts styles libs utils assets public/ 2>/dev/null || cp -r . public/",
     "preview": "python3 -m http.server 8080"
   },
   "keywords": [
