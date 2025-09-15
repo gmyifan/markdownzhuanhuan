@@ -1,18 +1,10 @@
 {
   "version": 2,
   "name": "markdown-converter",
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/product.html",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/product.html",
+      "destination": "/index.html"
     }
   ],
   "headers": [
