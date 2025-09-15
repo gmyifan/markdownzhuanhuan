@@ -6,7 +6,7 @@
   "scripts": {
     "start": "python3 -m http.server 8080",
     "dev": "python3 -m http.server 8080",
-    "build": "mkdir -p public && cp -r *.html *.json modules scripts styles libs utils assets public/ 2>/dev/null || cp -r . public/",
+    "build": "mkdir -p public && cp *.html public/ && cp -r modules scripts styles libs utils assets public/ 2>/dev/null || true",
     "preview": "python3 -m http.server 8080"
   },
   "keywords": [

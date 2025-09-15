@@ -1,7 +1,7 @@
 {
   "version": 2,
   "name": "markdownzhuanhuan-v015",
-  "buildCommand": "echo 'Static site - no build needed'",
+
   "outputDirectory": "public",
   "rewrites": [
     {
