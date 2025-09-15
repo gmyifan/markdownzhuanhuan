@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown 转换器 - 专业文档转换工具</title>
+    <link rel="stylesheet" href="styles/product.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-file-alt"></i>
+                <span>Markdown 转换器</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">功能特色</a>
+                <a href="#converter" class="nav-link">在线转换</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    专业的 <span class="highlight">Markdown</span> 转换工具
+                </h1>
+                <p class="hero-subtitle">
+                    支持 Word、PDF、图片等多种格式，一键转换为标准 Markdown 文档
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="scrollToConverter()">
+                        <i class="fas fa-rocket"></i>
+                        立即开始
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="conversion-demo">
+                    <div class="file-input">
+                        <i class="fas fa-file-word"></i>
+                        <span>Word 文档</span>
+                    </div>
+                    <div class="arrow">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                    <div class="file-output">
+                        <i class="fab fa-markdown"></i>
+                        <span>Markdown</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特色 -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">功能特色</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <h3>Word 转换</h3>
+                    <p>支持 .docx 格式，智能保持原有格式和结构，转换为标准 Markdown 语法</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3>PDF 处理</h3>
+                    <p>高精度提取 PDF 文本内容，自动识别标题、段落等结构元素</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>OCR 识别</h3>
+                    <p>先进的图片文字识别技术，支持中英文混合识别，准确率高达 95%</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>批量处理</h3>
+                    <p>支持多文件同时上传转换，大幅提升工作效率，节省宝贵时间</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>隐私保护</h3>
+                    <p>所有转换在本地完成，文件不上传到服务器，完全保护您的数据隐私</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>多格式导出</h3>
+                    <p>支持 .md、.txt 等多种格式导出，满足不同场景的使用需求</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 在线转换器 -->
+    <section id="converter" class="converter">
+        <div class="container">
+            <h2 class="section-title">在线转换器</h2>
+            <div class="converter-container">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>拖拽文件到此处或点击选择</h3>
+                        <p>支持 Word (.docx)、PDF (.pdf)、图片 (.jpg, .png, .gif) 等格式</p>
+                        <input type="file" id="fileInput" multiple accept=".docx,.pdf,.jpg,.jpeg,.png,.gif,.bmp,.webp">
+                        <button class="btn btn-outline" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-folder-open"></i>
+                            选择文件
+                        </button>
+                    </div>
+                </div>
+
+                <div class="conversion-status" id="conversionStatus" style="display: none;">
+                    <div class="status-header">
+                        <h3>转换进度</h3>
+                        <button class="btn btn-sm" onclick="resetConverter()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="progress-text" id="progressText">0%</span>
+                    </div>
+                    <div class="status-message" id="statusMessage">准备转换...</div>
+                </div>
+
+                <div class="conversion-results" id="conversionResults" style="display: none;">
+                    <div class="results-header">
+                        <h3>转换结果</h3>
+                        <div class="results-tabs">
+                            <button class="tab-btn active" data-tab="markdown">Markdown</button>
+                            <button class="tab-btn" data-tab="preview">预览</button>
+                        </div>
+                    </div>
+                    <div class="results-content">
+                        <div class="tab-content active" id="markdownTab">
+                            <textarea id="markdownOutput" readonly></textarea>
+                        </div>
+                        <div class="tab-content" id="previewTab">
+                            <div id="previewOutput"></div>
+                        </div>
+                    </div>
+                    <div class="results-actions">
+                        <button class="btn btn-primary" onclick="downloadMarkdown()">
+                            <i class="fas fa-download"></i>
+                            下载 Markdown
+                        </button>
+                        <button class="btn btn-outline" onclick="copyToClipboard()">
+                            <i class="fas fa-copy"></i>
+                            复制内容
+                        </button>
+                        <button class="btn btn-outline" onclick="resetConverter()">
+                            <i class="fas fa-refresh"></i>
+                            重新开始
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Markdown 转换器</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#privacy">隐私政策</a>
+                    <a href="#terms">服务条款</a>
+                    <a href="#help">帮助中心</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Markdown 转换器. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 通知容器 -->
+    <div id="notificationContainer"></div>
+
+    <!-- 依赖库 -->
+    <script src="https://unpkg.com/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://unpkg.com/turndown@7.1.2/dist/turndown.js"></script>
+    <script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+    <script src="https://unpkg.com/tesseract.js@4.1.1/dist/tesseract.min.js"></script>
+    <script src="https://unpkg.com/marked@9.1.2/marked.min.js"></script>
+
+    <!-- 本地备用库 -->
+    <script>
+        // 检查并加载备用库
+        if (typeof mammoth === 'undefined') {
+            document.write('<script src="libs/mammoth-fallback.js"><\/script>');
+        }
+        if (typeof TurndownService === 'undefined') {
+            document.write('<script src="libs/turndown-fallback.js"><\/script>');
+        }
+        if (typeof pdfjsLib === 'undefined') {
+            document.write('<script src="libs/pdf.min.js"><\/script>');
+        }
+        if (typeof Tesseract === 'undefined') {
+            document.write('<script src="libs/tesseract.min.js"><\/script>');
+        }
+    </script>
+
+    <!-- 核心模块 -->
+    <script src="utils/dom-utils.js"></script>
+    <script src="utils/file-utils.js"></script>
+    <script src="utils/format-detector.js"></script>
+    <script src="utils/ocr-utils.js"></script>
+    <script src="utils/performance-monitor.js"></script>
+    
+    <script src="modules/app-state.js"></script>
+    <script src="modules/word-converter.js"></script>
+    <script src="modules/pdf-converter.js"></script>
+    <script src="modules/image-converter.js"></script>
+    <script src="modules/file-processor.js"></script>
+    <script src="modules/conversion-manager.js"></script>
+    <script src="modules/export-handler.js"></script>
+    <script src="modules/markdown-editor.js"></script>
+
+    <!-- 主应用脚本 -->
+    <script src="scripts/product.js"></script>
+
+    <script>
+        // 初始化应用
+        document.addEventListener('DOMContentLoaded', function() {
+            window.productPage = new ProductPage();
+        });
+    </script>
+</body>
+</html>

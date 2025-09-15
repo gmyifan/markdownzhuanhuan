@@ -1,0 +1,39 @@
+{
+  "name": "markdown-converter",
+  "version": "0.1.5",
+  "description": "专业的文档转换工具 - 支持 Word、PDF、图片等多种格式转换为 Markdown",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "dev": "python3 -m http.server 8080",
+    "build": "echo 'Static site - no build needed'",
+    "preview": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "markdown",
+    "converter",
+    "word",
+    "pdf",
+    "ocr",
+    "document",
+    "转换器",
+    "文档转换"
+  ],
+  "author": "gmyifan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gmyifan/markdownzhuanhuan.git"
+  },
+  "homepage": "https://github.com/gmyifan/markdownzhuanhuan",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
