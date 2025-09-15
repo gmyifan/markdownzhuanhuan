@@ -1,12 +1,6 @@
 {
   "version": 2,
   "name": "markdown-converter",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
   "routes": [
     {
       "src": "/",
@@ -35,10 +29,5 @@
         }
       ]
     }
-  ],
-  "functions": {
-    "index.html": {
-      "includeFiles": "**"
-    }
-  }
+  ]
 }
